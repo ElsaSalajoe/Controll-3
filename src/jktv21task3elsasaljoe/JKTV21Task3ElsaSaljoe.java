@@ -34,28 +34,26 @@ public class JKTV21Task3ElsaSaljoe {
             Matcher s = p.matcher(surname);
             boolean found = s.matches();
             if(found){
-                
-                    System.out.println("Данные корректны " );
-                    System.out.println(s.matches());
-                    System.out.print("Введите личный код: "); //Без пробелов
-                    String id = scanner.next();
-                    boolean result = id.matches("\\d{11}");
-                    if(result == true){
-                            
-                        
-                    int Id = id.length();
-                    String f = (id.substring(0, 1));
-                    int first = Integer.parseInt(f);
-                    String M = (id.substring(3, 5));
-                    String[] month = {"Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"};
-                    String[] month2 = {"Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"};
-                    int Mon = Integer.parseInt(M);
-                    String d = (id.substring(5, 7));
-                    System.out.println(result);
-                    System.out.println(name + " " + surname + " " + id);
+                System.out.println("Данные корректны " );
+                System.out.println(s.matches());
+                System.out.print("Введите личный код: "); //Без пробелов
+                String id = scanner.next();
+                boolean result = id.matches("\\w{11}");
+                if(result == true)
+                {
                     try {
-                        
+                        int Id = id.length();
+                        String f = (id.substring(0, 1));
+                        int first = Integer.parseInt(f);
+                        String M = (id.substring(3, 5));
+                        String[] month = {"Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"};
+                        String[] month2 = {"Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"};
+                        int Mon = Integer.parseInt(M);
+                        String d = (id.substring(5, 7));
                         int Days = Integer.parseInt(d);
+                        System.out.println(result);
+                        System.out.println(name + " " + surname + " " + id);
+                        
                         System.out.println(first);
                         if (Id < 11 | Id > 11 ){
                             System.out.println ("Неправильный исикукод: он должен содержать 11 цифр");
@@ -77,6 +75,7 @@ public class JKTV21Task3ElsaSaljoe {
                             System.out.println("Просьба вводить данные корректно!");
                             System.out.println();
                         }
+                        else {
                             String mon = (month[Integer.parseInt(M)-1]);
                             String mon2 = (month2[Integer.parseInt(M)-1]);
                             System.out.println();
@@ -91,24 +90,23 @@ public class JKTV21Task3ElsaSaljoe {
                                 years = "20";
                             }
                             if(f.contains("2") | f.contains("4") | f.contains("6")){
-                            System.out.println("Первая цифра вашего исикукода: " + id.substring(0, 1));
-                            System.out.println("Ваш пол - женщина");
+                                System.out.println("Первая цифра вашего исикукода: " + id.substring(0, 1));
+                                System.out.println("Ваш пол - женщина");
                             }
                             if(f.contains("1") | f.contains("3") | f.contains("5")){
                                 System.out.println("Первая цифра вашего исикукода: " + id.substring(0, 1));
                                 System.out.println("Ваш пол - мужчина ");
                             }
-                            System.out.println("Год рождения " + years + id.substring(1, 3));
-                            System.out.println("Месяц рождения " + mon2);
-                            System.out.println("День рождения " + Days);
-                            System.out.println("Последние четыре цифры " + id.substring(7, 11));
-                            System.out.println();
-                            System.out.print(name+" " + surname +" ты родился ");
-                            System.out.printf("%s %s %s%s", Days, mon, years, id.substring(1, 3) + " года");
-                            break;
-                            
-                            
-                    }catch (NumberFormatException e) {
+                                System.out.println("Год рождения " + years + id.substring(1, 3));
+                                System.out.println("Месяц рождения " + mon2);
+                                System.out.println("День рождения " + Days);
+                                System.out.println("Последние четыре цифры " + id.substring(7, 11));
+                                System.out.println();
+                                System.out.print(name+" " + surname +" ты родился ");
+                                System.out.printf("%s %s %s%s", Days, mon, years, id.substring(1, 3) + " года ");
+                                break;
+                            }
+                        }catch (NumberFormatException e) {
                     System.err.println("Неправильный формат строки!");
                     }
                 }else{
